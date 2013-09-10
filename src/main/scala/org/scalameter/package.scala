@@ -150,7 +150,12 @@ package object scalameter {
   def extractClasspath(classLoader: ClassLoader, default: => String): String =
     classLoader match {
       case urlclassloader: java.net.URLClassLoader => extractClasspath(urlclassloader)
-      case _ => default
+      case _ =>
+        val parent = classLoader.getParent
+        if (parent != null)
+          extractClasspath(parent, default)
+        else
+          default
     }
 
   def extractClasspath(urlclassloader: java.net.URLClassLoader): String = {
