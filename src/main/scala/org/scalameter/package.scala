@@ -3,6 +3,7 @@ package org
 
 
 import java.io.File
+import java.net.URLClassLoader
 import java.util.Date
 import collection._
 import scala.util.DynamicVariable
@@ -144,10 +145,13 @@ package object scalameter {
 
   /* misc */
 
-  def defaultClasspath = this.getClass.getClassLoader match {
-    case urlcl: java.net.URLClassLoader => extractClasspath(urlcl)
-    case cl => sys.props("java.class.path")
-  }
+  def defaultClasspath = extractClasspath(this.getClass.getClassLoader, sys.props("java.class.path"))
+
+  def extractClasspath(classLoader: ClassLoader, default: => String): String =
+    classLoader match {
+      case urlclassloader: java.net.URLClassLoader => extractClasspath(urlclassloader)
+      case _ => default
+    }
 
   def extractClasspath(urlclassloader: java.net.URLClassLoader): String = {
     val fileResource = "file:(.*)".r
