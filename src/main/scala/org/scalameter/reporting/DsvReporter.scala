@@ -21,7 +21,6 @@ case class DsvReporter(delimiter: Char) extends Reporter {
   }
 
   def report(result: Tree[CurveData], persistor: Persistor) = {
-    val currentDate = new Date
     val resultdir = initialContext.goe(Key.reports.resultDir, "tmp")
 
     new File(s"$resultdir").mkdir()
@@ -102,8 +101,9 @@ object DsvReporter {
       }
     }
 
-    val curves = history.curves
-    val dates = history.dates
+    val currentDate = new Date
+    val curves = history.curves :+ cd
+    val dates = history.dates :+ currentDate
     
     header(cd)
     for ((c, d) <- curves zip dates) output(c, d)
