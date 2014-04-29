@@ -25,7 +25,7 @@ object ScalaMeterBuild extends Build {
 
   val scalaMeterSettings = Defaults.defaultSettings ++ publishCreds ++ Seq(
     scalaVersion := "2.10.3",
-    crossScalaVersions := Seq("2.10.3", "2.11.0-RC1"),
+    crossScalaVersions := Seq("2.10.3", "2.11.0"),
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xlint"),
     resolvers ++= Seq(
       "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
@@ -72,14 +72,14 @@ object ScalaMeterBuild extends Build {
         "org.apache.commons" % "commons-math3" % "3.2",
         "org.scala-tools.testing" % "test-interface" % "0.5"
       )
-      case "2.11.0-RC1" => Seq(
-        "org.scalatest" %% "scalatest" % "2.1.0" % "test",
-        "com.github.wookietreiber" %% "scala-chart" % "0.4.0-SNAPSHOT",
+      case "2.11.0" => Seq(
+        "org.scalatest" %% "scalatest" % "2.1.3" % "test",
+        "com.github.wookietreiber" %% "scala-chart" % "0.4.2",
         "org.apache.commons" % "commons-math3" % "3.2",
         "org.scala-tools.testing" % "test-interface" % "0.5",
         "org.scala-lang" % "scala-reflect" % scalaVersion,
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.0",
-        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.0"
+        "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
+        "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.1"
       )
       case _ => Seq()
     }
