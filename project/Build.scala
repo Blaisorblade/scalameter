@@ -68,7 +68,7 @@ object ScalaMeterBuild extends Build {
     scalaVersion match {
       case "2.10.3" => Seq(
         "org.scalatest" %% "scalatest" % "2.1.0" % "test",
-        "com.github.wookietreiber" %% "scala-chart" % "0.4.0-SNAPSHOT",
+        "com.github.wookietreiber" %% "scala-chart" % "0.4.2",
         "org.apache.commons" % "commons-math3" % "3.2",
         "org.scala-tools.testing" % "test-interface" % "0.5"
       )
