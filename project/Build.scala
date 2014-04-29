@@ -77,7 +77,7 @@ object ScalaMeterBuild extends Build {
         "com.github.wookietreiber" %% "scala-chart" % "0.4.0-SNAPSHOT",
         "org.apache.commons" % "commons-math3" % "3.2",
         "org.scala-tools.testing" % "test-interface" % "0.5",
-        "org.scala-lang" % "scala-reflect" % "2.11.0-RC1",
+        "org.scala-lang" % "scala-reflect" % scalaVersion,
         "org.scala-lang.modules" %% "scala-xml" % "1.0.0",
         "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.0"
       )
